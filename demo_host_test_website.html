@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Host Test Demo</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: rgba(255,255,255,0.08);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --border: rgba(255,255,255,0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(135deg, #020617, #0f172a 40%, #111827);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 24px 0;
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(2, 6, 23, 0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      padding: 88px 0 56px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #bae6fd;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.4rem);
+      line-height: 1.05;
+      margin: 0 0 18px;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      font-size: 1.06rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.2s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #082f49;
+      border-color: transparent;
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .status-grid,
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin: 28px 0 0;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 26px 0 48px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin: 0 0 10px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      margin: 0 0 22px;
+      max-width: 720px;
+      line-height: 1.7;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #f8fafc;
+    }
+
+    .pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent-2);
+      display: inline-block;
+      margin-right: 8px;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.7);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.7); }
+      70% { box-shadow: 0 0 0 12px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    footer {
+      padding: 32px 0 48px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    code.inline {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 8px;
+      border-radius: 8px;
+      color: #e0f2fe;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">HOST TEST DEMO</div>
+        <div class="nav-links">
+          <a href="#status">Status</a>
+          <a href="#features">Features</a>
+          <a href="#metrics">Metrics</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="badge"><span class="pulse"></span>Live deployment check</div>
+        <h1>Your demo website is working</h1>
+        <p>
+          This is a simple one-page website for testing free hosting platforms like GitHub Pages,
+          Netlify, Cloudflare Pages, or Vercel. If you can see this page online, your hosting setup is successful.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#status">View Status</a>
+          <a class="btn btn-secondary" href="#features">Inspect Demo</a>
+        </div>
+        <div class="status-grid" id="status">
+          <div class="card">
+            <h3>DNS / Domain</h3>
+            <p>Connected and resolving properly.</p>
+          </div>
+          <div class="card">
+            <h3>SSL / HTTPS</h3>
+            <p>Secure delivery is ready for browser testing.</p>
+          </div>
+          <div class="card">
+            <h3>Static Assets</h3>
+            <p>HTML and CSS loaded correctly on this page.</p>
+          </div>
+          <div class="card">
+            <h3>Responsive Layout</h3>
+            <p>Adapts across mobile, tablet, and desktop sizes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <h2 class="section-title">Included for testing</h2>
+        <p class="section-copy">
+          Use this demo page to verify deployment, styling, anchor links, buttons, sections, and layout rendering.
+          Edit the text inside <code class="inline">index.html</code> to personalize it before uploading.
+        </p>
+        <div class="feature-grid">
+          <div class="card">
+            <h3>Single-file setup</h3>
+            <p>No build process needed. Just upload one HTML file and publish.</p>
+          </div>
+          <div class="card">
+            <h3>Modern design</h3>
+            <p>Gradient background, glass cards, and smooth spacing for a polished first test.</p>
+          </div>
+          <div class="card">
+            <h3>Fast deployment</h3>
+            <p>Works well with any static hosting provider that serves HTML files.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <div class="container">
+        <h2 class="section-title">Demo metrics</h2>
+        <p class="section-copy">
+          These numbers are placeholders for design testing. Replace them with your own content later.
+        </p>
+        <div class="metrics">
+          <div class="card">
+            <div class="metric-value">99.9%</div>
+            <p>Uptime target</p>
+          </div>
+          <div class="card">
+            <div class="metric-value">1 file</div>
+            <p>Needed to deploy</p>
+          </div>
+          <div class="card">
+            <div class="metric-value">&lt; 1 min</div>
+            <p>Typical upload time</p>
+          </div>
+          <div class="card">
+            <div class="metric-value">100%</div>
+            <p>Static hosting friendly</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Demo website for hosting tests • Replace this text with your name or project title.
+    </div>
+  </footer>
+</body>
+</html>
